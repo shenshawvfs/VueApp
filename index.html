@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+HTML5 VUE App Template
+
+Copyright 2014-2018, Vancouver Film School, in cooperation with Kibble Games Inc.
+
+Author: Scott Henshaw
+Contributor: Clinton Ramonida
+
+** If you are using this as part of an assignment and do not edit this header
+** I will deduct marks!
+
+-->
+<html lang="en">
+    <head>
+        <title>VUE Template</title>
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+	    <!-- Styles -->
+        <link rel='stylesheet' href='static/css/style-base.css'>
+        <link rel='stylesheet' href='static/css/style.css'>
+        <link rel='stylesheet' href='static/css/media.css' media="all">
+
+        <!-- To operate offline we may want these to load from a local source -->
+        <!-- 
+        <script rel="preload" src="app/lib/vue.js"></script> 
+        -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+        <script type="text/javascript" src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+        <!-- Uncomment to load this to use the httpVueLoader in debug builds -->
+        <script type="text/javascript" src="https://unpkg.com/http-vue-loader"></script> 
+        
+    </head>
+	<!--        ****PLEASE READ****
+            Application's Structure Details: 
+    All the "wrapper" is in a form of CSS GRID Layout.
+    Each grid "area" has a "container" in a form of "flexbox".
+    And each flexbox "container" contains "flexitems".  
+    -->
+    <body>
+        <!-- Grid Layout -->
+        <div id="pg-app" class="wrapper">
+            <pg-header>
+                <sample-component widget="Hello" available></sample-component>
+            </pg-header>
+            <pg-sidebar>
+                <pg-about></pg-about>
+            </pg-sidebar>
+            <main class="grid-frame vue-main-rootcomponent">
+            
+                <router-view></router-view>
+
+            </main>
+            <!-- <pg-footer></pg-footer> -->
+
+
+            <div class="dialog-container">
+                <!-- dialogs instanciate within this container -->
+            </div>
+
+            <div class="loader">
+                <svg viewBox="0 0 32 32" width="32" height="32">
+                    <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+                </svg>
+            </div>
+
+        </div>
+
+        <!-- Uncomment for webpack release -->
+        <!-- <script type="module" src='./app/main.js'></script> -->
+
+        <!-- Uncomment for browser debug -->
+        <script type="module" src='./app/main_d.js'></script>
+	</body>
+</html>
+<!--
+@Licence:
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
