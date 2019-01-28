@@ -1,28 +1,30 @@
 <template>
+
     <div class="home">
         <div>Welcome to Your {{ name }}</div>
     </div>
+
 </template>
-
 <script>
+
 // if Header is defined, use it else define it.
+module.exports = {
 
-class HomeController {
-
-    constructor( componentName = 'aComponent') {
-        this.vm = {
+    data() { 
+        return {
             name: 'Home'
         }
-        this.name = componentName;
-    }
-    get props()   { return {} }
-    get methods() { return this.prototype }
-    data()        { return this.vm }
+    },
+    filters: {},
+    methods: {},
+    props:   [],
+    watches: {}
 }
 
-module.exports = new HomeController('pgHome');
-</script>
 
+</script>
 <style>
+
 /* Local styles for this template */
+
 </style>

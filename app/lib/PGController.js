@@ -22,12 +22,12 @@
 
 import HTTP from "./http.js";
 
-const DEBUG = true;
+const module = {}; // classes to debug
 
 export default class PGController {
 
-    constructor( ...options ) {
-        this.name = 'aComponent';
+    constructor( name = 'aComponent', ...options ) {
+        this.name = name;
         this.vm = {};
         this.props = {};
         this.filters = {};
@@ -86,8 +86,7 @@ export default class PGController {
         //parse <script></script> tag
         let scriptNode = partialHTMLDoc.getElementsByTagName('script')[0].innerHTML;
         let ctrl = (Function( scriptNode ))();        
-        return  this.tag( ctrl.name )
-                    .viewModel( ctrl.vm )
+        return  this.viewModel( ctrl.data() )
                     .bindings( ctrl.props )
                     .controller( ctrl.methods )
                     .template( markup );
