@@ -6,10 +6,10 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 /*
 @FUTURE:
     import Vue from './dist/vue.esm.browser.js'
-    import VueRouter from './dist/vue-router.esm.js'
+    */
+import VueRouter from './dist/vue-router.esm.js';
+Vue.use(VueRouter);
 
-    Vue.use(VueRouter)
-*/
 
 class Route {
 

@@ -2,11 +2,11 @@
 
     <header id="header-wrapper" class="grid-header area vue-component">
         <div id="header-container" class="header flexbox">
-            <div class="logo flexitem" @click="goHome"></div>
+            <div class="logo flexitem" @click="$ctrl.goHome"></div>
             <slot class="flexitem"></slot>
             <div class="title flexitem">
-                <h1>{{ title }}</h1>
-                <h3>{{ subtitle }}</h3>
+                <h1>{{ vm.title }}</h1>
+                <h3>{{ vm.subtitle }}</h3>
             </div>
         </div>
     </header>
@@ -14,26 +14,30 @@
 </template>
 <script>
 
-module.exports = {
+export default {
+    name: 'pgHeader',
     data() { 
         return {
-            title:    "VUE Template Title",
-            subtitle: "A Beggining",
-
+            vm: {
+                title:    "VUE Template Title",
+                subtitle: "A Beggining",
+            }
+        }
+    },
+    props:   [],
+    methods: {
+        $ctrl: {
+            goHome( event ) {
+                console.log("Going home now!");
+                location.href = "./index.html";
+            }
         }
     },
     filters: {},
-    methods: {
-        goHome() {
-            console.log("Going home now!");
-            location.href = "./index.html";
-        }
-    },
-    name: 'pgHeader',
-    props:   [],
     watches: {}
 }
 
 </script>
 <style>
+
 </style>

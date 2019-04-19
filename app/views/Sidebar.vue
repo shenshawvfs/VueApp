@@ -29,8 +29,7 @@ class Controller {
     get watches() { return {}}
 }
 
-const ctrl = new Controller();
-module.exports = { data() { return ctrl.vm; }  }
+export default new Controller();
 
 </script>
 <style></style>

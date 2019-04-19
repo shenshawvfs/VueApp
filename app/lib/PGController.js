@@ -24,6 +24,33 @@ import HTTP from "./http.js";
 
 const module = {}; // classes to debug
 
+const Template = {
+
+    fetch( templateVUEURI = "") {
+
+        if (!templateVUEURI.endsWith(".vue") && !templateVUEURI.endsWith(".html")) 
+            return "";
+
+        HTTP.get( templateVUEURI )
+            .then( markup => {
+                if (templateVUEURI.endsWith(".html"))
+                    return markup;
+
+                let parser = new DOMParser();
+                let partialHTMLDoc = parser.parseFromString( markup, "text/html");
+                // is there a <template> tag if so get the innerhtml, else use the whole thing.
+                markup = partialHTMLDoc.getElementsByTagName('template')[0].innerHTML;
+
+                /*
+                let styleNode = partialHTMLDoc.getElementsByTagName('style')[0];
+                document.querySelector('head').appendChild( styleNode );        
+                */
+            return markup;
+            });
+
+}
+
+
 export default class PGController {
 
     constructor( name = 'aComponent', ...options ) {
@@ -104,3 +131,6 @@ export default class PGController {
         }
     }
 }
+
+// Mixin extension for the template functionality
+Object.assign( PGcontroller.prototype, Template );
