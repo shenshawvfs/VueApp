@@ -1,18 +1,19 @@
 <template>
 
     <div class="home">
-        <div>Welcome to Your {{ name }}</div>
+        <div>Welcome to Your {{ vm.name }}</div>
     </div>
 
 </template>
 <script>
 
 // if Header is defined, use it else define it.
-module.exports = {
-
+export default {
     data() { 
         return {
-            name: 'Home'
+            vm: {
+                name: 'Home'
+            }
         }
     },
     filters: {},

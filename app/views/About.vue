@@ -1,12 +1,13 @@
 <template>
+
     <div class="about">
         <div>{{ name }} your Vue.js App</div>
     </div>
-</template>
 
+</template>
 <script>
 // if Header is defined, use it else define it.
-module.exports = { 
+export default { 
     data() { 
         return { 
             name: 'About',
@@ -20,7 +21,6 @@ module.exports = {
     }
 }
 </script>
-
 <style>
 /* Local styles for this template */
 </style>

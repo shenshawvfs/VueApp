@@ -11,12 +11,11 @@ Component does not require node, webpack, vuecli, just a browser - for developme
 */
 'use strict';
 
-import VUEController from '../lib/VueController.js';
+import VUEController from '../lib/VUEController.js';
 
-class Controller extends VUEController {
+class SampleController {
 
     constructor() {
-        super();
 
         // internal stuff, not the template variables or properties
         this.style = `
@@ -25,33 +24,38 @@ class Controller extends VUEController {
             }`;
 
         // controller attributes available for use in the template, methods too
-        this.ctrl = {
-            name:  "Scott",
-
+        return Object.freeze({
             doSomething: this.doSomething
-        }
+        })
     }
 
     // Add template methods here...
     //--------------------------------------------------------
     doSomething() {
         // trigger this inside the template...
-        console.log('did something');
+        let debug = true;
     }
 }
 
 export default Vue.component('sample-component', {
-        props: {
-            widget:    String,
-            enum:      Number,
-            available: Boolean,
-            author:    Object
-        },
-        template: `
-        <label class="sample-bar">
-            {{ ctrl.name }}
-            <input v-bind:value="widget" v-on:input="$emit('input', $event.target.value )">
-            <slot></slot>
-        </label>`,
-        data: () => { return new Controller() }
-    });
+    template: `
+    <label class="sample-bar">
+        {{ vm.name }}
+        <input v-bind:value="widget" v-on:input="$emit('input', $event.target.value )">
+        <slot></slot>
+    </label>`,
+    props: {
+        widget:    String,
+        enum:      Number,
+        available: Boolean,
+        author:    Object
+    },
+    data: () => { 
+        return { 
+            vm: {
+                name: 'Scott'
+            }
+        } 
+    },
+    methods: new SampleController()
+});
