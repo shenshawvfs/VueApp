@@ -4,19 +4,14 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 */
 'use strict';
 
-import PGComponent from './lib/PGController.js';
-
 //This is were we register every components that is instantiated in this Main Root Component
-import Sample from './components/sample.component.js';
+import Header from './components/header.component.js';
+import Navbar from './components/navbar.component.js';
+import Sidebar from './components/sidebar.component.js';
 
-const components = {
-    //Home:    Vue.component("pg-home",    httpVueLoader("app/views/Home.vue")),
-    Home:    Vue.component('pg-home',    httpVueLoader('app/views/Home.vue')),
-    About:   Vue.component("pg-about",   httpVueLoader("app/views/About.vue")),
-    Header:  Vue.component("pg-header",  httpVueLoader("app/views/Header.vue")),
-    Sidebar: Vue.component("pg-sidebar", httpVueLoader("app/views/Sidebar.vue")),
-    Navbar:  Vue.component("pg-navbar",  httpVueLoader("app/views/Navbar.vue")),
-};
+import Home from './components/home.component.js';
+import About from './components/about.component.js';
+import Sample from './components/sample.component.js';
 
 
 // registering(globally) our router to our root #app
@@ -25,5 +20,5 @@ import router from './router/router.js';
 // Main entry point of the application
 document.addEventListener('DOMContentLoaded', event => {
     
-    new Vue({ router, components }).$mount('#pg-app');
+    new Vue({ router }).$mount('#pg-app');
 });

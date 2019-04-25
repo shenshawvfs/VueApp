@@ -127,8 +127,6 @@ input[type=button]:focus {
     align-self: center;
 }
 
-
-
 /* header */
 .header {
     background: #D10034; 
@@ -143,6 +141,7 @@ input[type=button]:focus {
     background-size:100% 100%;
     height: 54px;
     width: 165px;
+    max-width: 64px;
     margin-left: 3em;
     cursor: pointer;
 }
@@ -158,7 +157,6 @@ input[type=button]:focus {
     cursor: pointer;
     visibility: hidden;
 }
-
 
 /* sidebar */
 .sidebar {
