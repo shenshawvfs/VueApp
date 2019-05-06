@@ -8,17 +8,12 @@
         <pg-sidebar></pg-sidebar>
 
         <!-- TODO:have this dynamically change and generate appropriate info for different sections -->
-        <!-- (Assignments(by term..), Game jams, etc..)  -->
-        <transition name="slide-fade">
-            <router-view></router-view>
-        </transition>
+        <router-view></router-view>
 
         <pg-footer></pg-footer>
     </div>
 </template>
 <script>
-    import 'keen-ui/dist/keen-ui.css';
-
     // typical Vue component controller defined and registered here
     import pgHeader  from './components/header.vue'
     import pgSidebar from './components/sidebar.vue'
@@ -29,13 +24,19 @@
         subtitle: ''
     }
 
+    // methods can access 'this'
+    const methods = {
+        doIt: () => {
+            this.title = 'A new title'; // refers to viewModel.title (or it will)
+        }
+    }
 
     // export a definition for this view
     export default {
         name:       'pgApp',
-        props:      {},
-        components: { pgHeader, pgSidebar, pgFooter },
-        methods:    {},
+        props:      {},  // what attributes does the <pg-app></pg-app> component have
+        components: { pgHeader, pgSidebar, pgFooter },  // things we need to build this
+        methods,
         data()      { return viewModel }
     }
 
