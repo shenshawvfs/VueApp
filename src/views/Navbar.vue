@@ -1,8 +1,12 @@
 <!--
-VFS VUE Single File Componenet
+VFS VUE Single File Component
+
+<pg-navbar></pg-navbar>
+
 Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
+
     <nav id="navigation-wrapper" class="grid-nav area vue-component">
         <div id="menu-container" class="menu flexbox">
             <div class="navbar flexitem">
@@ -14,23 +18,25 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             </div>
         </div>
     </nav>
+
 </template>
-
 <script>
-class Controller {
+    import Controller from '@/../lib/controller'
 
-    constructor() {
-        this.vm = {
-            navMenu:[
-                { section: "Home" },
-                { section: "About" }
-            ]
-        };
+    class NavbarController extends Controller {
+
+        constructor( name, subComponentList = []) {
+            super( name, subComponentList )
+            this.vm = {
+                navMenu:[
+                    { section: "Home" },
+                    { section: "About" }
+                ]
+            };
+        }
     }
-}
 
-const ctrl = new Controller();
-module.exports = { data() { return ctrl.vm; }  }
+    export default new NavbarController('pgNavbar');
 
 </script>
 

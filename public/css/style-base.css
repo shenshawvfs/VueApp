@@ -19,7 +19,6 @@ body, div, ul {
     margin:0;
     padding:0;
     border:none;
-    color:#fff;
 }
 
 button {
@@ -124,13 +123,13 @@ input {height: 1.4em;font-weight:  700;font-size: 1.2em;}
         grid-row-end: 6;
     }
 
-.flex-wrapper { 
+.flex-wrapper {
     background-color: lightgrey;
     display: flex;
     flex-direction: row;
     flex-wrap:none;
     justify-content: center;
-    
+
     margin: 0 auto;
     margin-top: 1%;
     width: 98%;

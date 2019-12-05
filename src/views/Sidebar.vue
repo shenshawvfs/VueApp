@@ -1,3 +1,10 @@
+<!--
+VFS VUE Single File Component
+
+<pg-sidebar></pg-sidebar>
+
+Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
+-->
 <template>
 
     <aside id="sidebar-wrapper" class="grid-side area vue-component">
@@ -13,23 +20,22 @@
 
 </template>
 <script>
+    import Controller from '@/../lib/controller'
 
-class Controller {
-    constructor() {
-        this.vm = {
-            title:       "My Sidebar",
-            description: "Application Name"
+    import pgNavbar from '@/views/Navbar.vue'
+
+    class SidebarController extends Controller {
+
+        constructor( name, subComponentList = []) {
+            super( name, subComponentList );
+            this.vm = {
+                title:       "My Sidebar",
+                description: "Application Name"
+            }
         }
-        this.props = [];
     }
-    data() { return this.vm }
 
-    get filters() { return {}}
-    get methods() { return {}}
-    get watches() { return {}}
-}
-
-export default new Controller();
+    export default new SidebarController('pgSidebar', { pgNavbar });
 
 </script>
 <style></style>

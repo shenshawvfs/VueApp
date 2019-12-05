@@ -3,42 +3,50 @@
 @copyright (c) 2018. Scott Henshaw, Clinton Jay Ramonida. All Rights Reserved.
 -->
 <template>
-    <div class="grid-frame vue-main-rootcomponent">
+
+    <main class="grid-frame vue-main-rootcomponent">
         <pg-header></pg-header>
         <pg-sidebar></pg-sidebar>
 
         <!-- TODO:have this dynamically change and generate appropriate info for different sections -->
         <router-view></router-view>
 
-        <pg-footer></pg-footer>
-    </div>
+        <div class="dialog-container">
+            <!-- dialogs instanciate within this container -->
+        </div>
+        <div class="loader">
+            <svg viewBox="0 0 32 32" width="32" height="32">
+                <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+            </svg>
+        </div>
+    </main>
+
 </template>
 <script>
     // typical Vue component controller defined and registered here
-    import pgHeader  from './components/header.vue'
-    import pgSidebar from './components/sidebar.vue'
-    import pgFooter  from './components/footer.vue'
+    import Controller from '@/../lib/controller'
 
-    const viewModel = {
-        title: 'Creative Tech Projects',
-        subtitle: ''
-    }
+    import pgHeader  from '@/views/Header.vue'
+    import pgNavbar from '@/views/Navbar.vue'
+    import pgSidebar from '@/views/Sidebar.vue'
 
-    // methods can access 'this'
-    const methods = {
-        doIt: () => {
+    class AppController extends Controller {
+
+        constructor( name, subComponentList = []) {
+            super( name, subComponentList );
+            this.vm = {
+                title: 'Creative Tech Projects',
+                subtitle: ''
+            }
+        }
+
+        doIt() {
             this.title = 'A new title'; // refers to viewModel.title (or it will)
         }
     }
 
     // export a definition for this view
-    export default {
-        name:       'pgApp',
-        props:      {},  // what attributes does the <pg-app></pg-app> component have
-        components: { pgHeader, pgSidebar, pgFooter },  // things we need to build this
-        methods,
-        data()      { return viewModel }
-    }
+    export default new AppController('pgApp', { pgHeader, pgSidebar, pgNavbar });
 
 </script>
 <style>
@@ -180,11 +188,11 @@
     }
 
     .logo {
-        background-image:url("assets/vfs_main_logo.png");
+        background-image:url("assets/vfs_logo.png");
         background-size:100% 100%;
-        height: 54px;
+        height: 120px;
         width: 165px;
-        margin-left: 3em;
+        margin-left: 1em;
         cursor: pointer;
     }
 

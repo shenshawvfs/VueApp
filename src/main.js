@@ -3,40 +3,34 @@ VUE App's MAIN Component.
 Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 */
 'use strict';
-/*
-@FUTURE:
-    import Vue from './dist/vue.esm.browser.js'
-    import VueRouter from './dist/vue-router.esm.js'
 
-    Vue.use(VueRouter)
-*/
-
-//This is were we register every components that is instantiated in this Main Root Component.
-import Header from  './views/Header.vue';
-import Sidebar from './views/Sidebar.vue'
-//import { Footer } from  './components/footer.js' 
+import Vue from 'vue'
 
 //registering(globally) our router to our root #app
-import router from './router/router.js' 
+import store from '@/store'
 
-class App {
+import router from '@/router'
+//import router from 'vue-router';
+//Vue.use( router );
+
+//This is were we register every components that is instantiated in this Main Root Component.
+import App from '@/App.vue'
+
+class MainApp {
 
     constructor () {
-        this.view = new Vue({ 
+        new Vue({
             router,
-            /* render: h => h( this ) */
+            store,
+            components: { App },
+            render: h => h( App ),
         }).$mount('#app');
-
-        this.run();
     }
 
-    run() {
-        // Run an interval or requestAnimationFrame here if required.
-    }
 }
 
 // Main entry point of the application
 document.addEventListener('DOMContentLoaded', event => {
-    
-    const app = new App();
+
+    const app = new MainApp();
 });
