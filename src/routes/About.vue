@@ -15,7 +15,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
 </template>
 <script>
-    import Controller from '@/../lib/controller'
+    import Controller from '@/lib/controller'
 
     class AboutController extends Controller {
 

@@ -2,8 +2,8 @@
  *   Copyright (c) 2019 Kibble Online, in cooperation with Vancouver Film School
  *   All rights reserved.
  */
-import Store from '../src/store.js'
-import Router from '../src/router.js'
+import Store from '../store.js'
+import Router from '../router.js'
 
 export default class Controller {
 
@@ -16,7 +16,9 @@ export default class Controller {
         this.computed = {/* ...mapGetters('account', ['status']) */ }
         this.methods =  {/*...mapActions('account', ['login', 'logout']),*/ };
 
-        this._extractMethods(['compute_', 'on_', 'vue_']);
+        this.pascalCase = str => str.replace( /(\w)(\w*)/g, (g0,g1,g2) => { return g1.toUpperCase() + g2.toLowerCase() });
+
+        this._extractMethods(['compute_', 'compute','on_', 'on', 'vue_', 'vue', 'get_', 'get']);
     }
 
     _extractMethods( prefixList ) {
@@ -39,14 +41,19 @@ export default class Controller {
 
                     delete this.methods[ methodName ];
                     let newName = _strip( methodName, prefix );
+                    newName = newName.charAt(0).toLowerCase() + newName.slice(1);
                     switch (prefix) {
-
                         case "compute_":
-                        case "on_":
+                        case "compute":
+                        case "get_":
+                        case "get":
                             this.computed[ newName ] = localMethods[ methodName ];
                             break;
 
+                        case "on_":
+                        case "on":
                         case "vue_":
+                        case "vue":
                             // Add hooks here...
                             /*
                             this.beforeCreate()

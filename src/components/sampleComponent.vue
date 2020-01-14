@@ -18,7 +18,7 @@
 
 </template>
 <script>
-    import Controller from '@/../lib/controller'
+    import Controller from '@/lib/controller'
 
     // import other components you use here...
 
@@ -32,8 +32,55 @@
             this.props = { // props are passed in when using this component
                 title: String
             }
+
+            /*
+            Components use the getters with ...mapState('module/sub-module', ['getter-name'])
+            to access the State data
+
+            In the component constructor
+
+                this.computed = {
+                    ...mapState('module/user', ['getName', 'getTeam']),
+                    ...mapState('module/game', ['getId', 'getTeam'])
+                }
+
+            */
+
         }
 
+        onBeforeCreate() {
+            // after the Vue instance initializes, before instances are created
+        }
+
+        onCreated() {
+            // called when each instance is initialized
+        }
+
+        onBeforeMount() {
+            // called before the component is injected into the DOM
+        }
+
+        onMounted() {
+            // called
+        }
+
+        onBeforeUpdate() {
+
+        }
+
+        onUpdated() {
+
+        }
+
+        onBeforeDestroy() {
+
+        }
+
+        onDestroyed() {
+
+        }
+
+        // your local component methods
         doIt( event ) {
             // A method that does something to the props or viewModel, or global state
         }
@@ -49,8 +96,17 @@
     */
     .component-style {
         display: flex;
-        height: 20vh;
-        width: 100%;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:space-evenly;
+        align-content: flex-start;
+        align-items:flex-start;
+    }
+
+    .component-item {
+        flex-grow: inherit;
+        flex-shrink: inherit;
+        order: inherit;
     }
 
 </style>

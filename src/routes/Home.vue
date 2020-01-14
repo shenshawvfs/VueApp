@@ -9,20 +9,21 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
     <section class="home-container">
         <div class="home">
-            <div>Welcome to your {{ name }}</div>
+            <h2>Welcome to your {{ name }}</h2>
         </div>
     </section>
 
 </template>
 <script>
 
-    import Controller from '@/../lib/controller'
+    import Controller from '@/lib/controller'
 
     class HomeController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
-            this.vm = {}
+            this.vm = {
+            }
             this.props = {
                 name: String,
             }
@@ -48,4 +49,15 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         width: 80vw;
     }
 
+    select, input, button {
+        font-size: 1.2em;
+        font-weight: 700;
+        height: 1.4em;
+    }
+
+    button {
+        padding: .5em;
+        margin: .25em;
+        padding-bottom: 1.5em;
+    }
 </style>

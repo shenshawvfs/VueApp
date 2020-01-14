@@ -24,11 +24,11 @@
 </template>
 <script>
     // typical Vue component controller defined and registered here
-    import Controller from '@/../lib/controller'
+    import Controller from '@/lib/controller'
 
-    import pgHeader  from '@/views/Header.vue'
-    import pgNavbar from '@/views/Navbar.vue'
-    import pgSidebar from '@/views/Sidebar.vue'
+    import pgHeader  from '@/components/Header.vue'
+    import pgNavbar from '@/components/Navbar.vue'
+    import pgSidebar from '@/components/Sidebar.vue'
 
     class AppController extends Controller {
 
