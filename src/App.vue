@@ -59,20 +59,9 @@
     */
 
     /* DEFAULTS */
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-    }
-
-    html {
-        font-size: 100%;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-size: 100%; }
+    * { margin: 0; padding: 0; }
 
     body {
         background-color: rgb(194, 193, 193);
@@ -80,11 +69,21 @@
         overflow: hidden;
     }
 
-    input[type=button] {
-        background-color: black;
+    label {
         color: white;
+        font-weight: 600;
+        text-shadow: 2px 2px #777;
+    }
+
+    input {
+        background-color: white;
+        color: black;
         font-family: 'Maven Pro', Helvetica, sans-serif;
         font-size: 17px;
+    }
+
+    input[type=button] {
+        background-color: black;
         margin: 3px;
         padding: 3px 8px;
         border: 1px solid black;
@@ -188,12 +187,13 @@
     }
 
     .logo {
-        background-image:url("assets/vfs_logo.png");
-        background-size:100% 100%;
-        height: 120px;
-        width: 165px;
-        margin-left: 1em;
-        cursor: pointer;
+    background-image:url("assets/vfs_logo.png");
+    background-size:100% 100%;
+    height: 6em;
+    width: 8em;
+    max-width: 8em;
+    margin-left: 1em;
+    cursor: pointer;
     }
 
     .title {
@@ -215,14 +215,48 @@
         box-shadow: inset -1px 0 2px 1px #222;
     }
 
-    .side-item{
+    .side-item {
         margin-top: 2em;
         padding: 1em;
     }
 
     /* navigation bar */
-    .menu{
-        background: rgba(0, 0, 0, 0);
+    .menu { background: rgba(0, 0, 0, 0); }
+
+    .navbar{
+        margin-top: 2em;
+        width: 100%;
+        height: 100%;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        list-style-type: none;
+        overflow: hidden;
+    }
+
+    li {
+        background: #D10034;
+        float: left;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+
+    li:hover {
+        background-color: #111;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05), 0 5px 5px rgba(0,0,0,0.22);
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: start;
+        text-decoration: none;
+        padding: 0.7em;
     }
 
     /* content */
@@ -263,8 +297,6 @@
         width: 95%;
         margin: 10px;
     }
-
-
 
     /* Button Styles */
     .buttons {

@@ -10,6 +10,19 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     <section class="home-container">
         <div class="home">
             <div>Welcome to your {{ name }}</div>
+            <div class="dialog">
+
+                <form class="sample-form">
+                    <label>Sample field
+                        <input name="s1" v-model="formData.sampleOne">
+                    </label><br/>
+                    <label>Number field:
+                        <input name="s2" v-model="formData.sampleTwo">
+                    </label><br/>
+                    <button value="Submit" class="">Submit</button>
+                </form>
+
+            </div>
         </div>
     </section>
 
@@ -22,7 +35,12 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
-            this.vm = {}
+            this.vm = {
+                formData: {
+                    sampleOne:"",
+                    sampleTwo:42,
+                }
+            }
             this.props = {
                 name: String,
             }
@@ -48,4 +66,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         width: 80vw;
     }
 
+    .sample-form {
+        border: 2px solid #333;
+        margin: 1em;
+        padding: 2em;
+    }
 </style>
