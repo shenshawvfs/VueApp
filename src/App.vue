@@ -9,11 +9,12 @@
         <pg-sidebar></pg-sidebar>
 
         <!-- TODO:have this dynamically change and generate appropriate info for different sections -->
-        <router-view></router-view>
+        <router-view />
 
         <div class="dialog-container">
             <!-- dialogs instanciate within this container -->
         </div>
+
         <div class="loader">
             <svg viewBox="0 0 32 32" width="32" height="32">
                 <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
