@@ -24,7 +24,7 @@
 </template>
 <script>
     // typical Vue component controller defined and registered here
-    import Controller from '@/lib/controller'
+    import Controller from '@/mixins/controller'
 
     import pgHeader  from '@/components/Header.vue'
     import pgNavbar from '@/components/Navbar.vue'

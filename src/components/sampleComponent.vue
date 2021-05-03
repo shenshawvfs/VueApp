@@ -18,7 +18,7 @@
 
 </template>
 <script>
-    import Controller from '@/lib/controller'
+    import Controller from '@/mixins/controller'
 
     // import other components you use here...
 
