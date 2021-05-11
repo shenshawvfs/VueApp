@@ -36,7 +36,7 @@ MainComponent.js behaves a bit differently for it is a Vue.component but also ha
 ```
         ├── /dist                    # auto generated don't touch
         |
-        ├── /lib
+        ├── /mixins
         |   ├── http.js
         |   ├── sampleDirective.js
         |   └── controller.js
