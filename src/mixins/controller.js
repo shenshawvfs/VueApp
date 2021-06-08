@@ -43,6 +43,8 @@ export default class Controller {
 
                     delete this.methods[ methodName ];
                     let newName = _strip( methodName, prefix );
+
+                    // Camel case the name
                     newName = newName.charAt(0).toLowerCase() + newName.slice(1);
                     switch (prefix) {
                         case "compute_":
