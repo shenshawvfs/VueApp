@@ -5,6 +5,8 @@
 import Store from '../store.js'
 import Router from '../router.js'
 
+import { mapActions, mapGetters } from 'vuex'
+
 const pascalCase = str => str.replace( /(\w)(\w*)/g, (g0,g1,g2) => { return g1.toUpperCase() + g2.toLowerCase() });
 const camelCase = str => str.replace( /(?:^\w|[A-Z]|\b\w)/g, ( g0, gi ) => { return gi === 0 ? g0.toLowerCase() : g0.toUpperCase() });
 
@@ -19,9 +21,11 @@ export default class Controller {
         this.computed = {/* ...mapGetters('account', ['status']) */ }
         this.methods =  {/*...mapActions('account', ['login', 'logout']),*/ };
 
-
         this._extractMethods(['compute_', 'compute','on_', 'on', 'vue_', 'vue', 'get_', 'get']);
     }
+
+    injectActions( actionMap ) { Object.assign( this.methods, mapActions( actionMap ))}
+    injectGetters( gettersMap ) { Object.assign( this.computed, mapGetters( gettersMap ))}
 
     _extractMethods( prefixList ) {
 
