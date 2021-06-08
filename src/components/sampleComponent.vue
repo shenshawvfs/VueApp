@@ -34,49 +34,42 @@
             }
 
             /*
-            Components use the getters with ...mapState('module/sub-module', ['getter-name'])
-            to access the State data
-
-            In the component constructor
-
-                this.computed = {
-                    ...mapState('module/user', ['getName', 'getTeam']),
-                    ...mapState('module/game', ['getId', 'getTeam'])
-                }
-
+            Components use the helper methods
+            use injectGetters. injectActions with an array of names from the vuex
             */
-
+            //this.injectGetters(['getterName','anotherGetter']);
+            //this.injectActions(['actionMethod','anotherAction'])
         }
 
-        onBeforeCreate() {
+        vueBeforeCreate() {
             // after the Vue instance initializes, before instances are created
         }
 
-        onCreated() {
+        vueCreated() {
             // called when each instance is initialized
         }
 
-        onBeforeMount() {
+        vueBeforeMount() {
             // called before the component is injected into the DOM
         }
 
-        onMounted() {
+        vueMounted() {
             // called
         }
 
-        onBeforeUpdate() {
+        vueBeforeUpdate() {
 
         }
 
-        onUpdated() {
+        vueUpdated() {
 
         }
 
-        onBeforeDestroy() {
+        vueBeforeDestroy() {
 
         }
 
-        onDestroyed() {
+        vueDestroyed() {
 
         }
 
