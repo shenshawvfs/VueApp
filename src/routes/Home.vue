@@ -29,7 +29,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 </template>
 <script>
 
-    import Controller from '@/../lib/controller'
+    import Controller from '@/lib/controller'
 
     class HomeController extends Controller {
 
@@ -70,5 +70,17 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         border: 2px solid #333;
         margin: 1em;
         padding: 2em;
+    }
+
+    select, input, button {
+        font-size: 1.2em;
+        font-weight: 700;
+        height: 1.4em;
+    }
+
+    button {
+        padding: .5em;
+        margin: .25em;
+        padding-bottom: 1.5em;
     }
 </style>
