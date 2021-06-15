@@ -1,31 +1,22 @@
 <!--
-<pg-app></pg-app>
-@copyright (c) 2018. Scott Henshaw, Clinton Jay Ramonida. All Rights Reserved.
+<pg-app />
+@copyright (c) 2021. Scott Henshaw. All Rights Reserved.
 -->
 <template>
 
     <main class="grid-frame vue-main-rootcomponent">
-        <pg-header></pg-header>
-        <pg-sidebar></pg-sidebar>
 
-        <!-- TODO:have this dynamically change and generate appropriate info for different sections -->
+        <pg-header />
+        <pg-sidebar />
+
         <router-view />
 
-        <div class="dialog-container">
-            <!-- dialogs instanciate within this container -->
-        </div>
-
-        <div class="loader">
-            <svg viewBox="0 0 32 32" width="32" height="32">
-                <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
-            </svg>
-        </div>
     </main>
 
 </template>
 <script>
     // typical Vue component controller defined and registered here
-    import Controller from '@/lib/controller'
+    import Controller from '@/mixins/controller'
 
     import pgHeader  from '@/components/Header.vue'
     import pgNavbar from '@/components/Navbar.vue'
@@ -39,10 +30,6 @@
                 title: 'Creative Tech Projects',
                 subtitle: ''
             }
-        }
-
-        doIt() {
-            this.title = 'A new title'; // refers to viewModel.title (or it will)
         }
     }
 

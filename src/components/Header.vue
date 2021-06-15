@@ -20,7 +20,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
 </template>
 <script>
-    import Controller from '@/lib/controller'
+    import Controller from '@/mixins/controller'
 
     class HeaderController extends Controller {
 
