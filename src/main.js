@@ -16,7 +16,7 @@ import router from '@/router'
 //This is were we register every components that is instantiated in this Main Root Component.
 import App from '@/App.vue'
 
-class MainApp {
+class Main {
 
     constructor () {
         new Vue({
@@ -32,5 +32,5 @@ class MainApp {
 // Main entry point of the application
 document.addEventListener('DOMContentLoaded', event => {
 
-    const app = new MainApp();
+    const app = new Main();
 });

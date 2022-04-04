@@ -1,169 +1,182 @@
-/*
- * CSS Styles for Risk Demo App
- *
- * Copyright 2014, Vancouver Film School
- *
- */
- body, html {
-    background: #242527;
+/**
+@copyright 2014-2022, Vancouver Film School
+*/
+:root {
+    --golden-ratio: 1.618;
+    --map-height: 480px;
+    --map-width: 1600px;
+
+    --none: #B6CCF0;
+    --light: #99ACC9;
+    --highlight: #ACC1E3;
+    --medium: #7C8BA3;
+    --dark: #4E5766;
+}
+
+.none { color: var(--none); }
+.light { color: var(--light);}
+.highlight { color: var(--highlight); }
+.medium { color: var(--medium); }
+.dark { color: var(--dark); }
+
+/* Clear defaults to start */
+
+/* Box sizing rules */
+*, *::before, *::after {
+    box-sizing: border-box;
     border: none;
-    color: #fff;
+    margin:0;
+    padding:0;
+}
+
+/* Remove default padding */
+ul[class], ol[class] { padding: 0; }
+
+/* Remove default margin */
+body, h1, h2, h3, h4, p, blockquote, ul[class], ol[class], li, dl, dd, figure, figcaption { margin: 0; }
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class], ol[class] { list-style: none; }
+
+/* A elements that don't have a class get default styles */
+a:not([class]) { text-decoration-skip-ink: auto; }
+
+/* Make images easier to work with */
+img { max-width: 100%; display: block; }
+
+/* Natural flow and rhythm in articles by default */
+article > * + * { margin-top: 1em; }
+
+/* Inherit fonts for inputs and buttons */
+input, button, textarea, select { font: inherit; }
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* Add Styles for a grey bland teaching world */
+html, body {
+    background: var(--dark);
+    color: var(--none);
     font-family: Helvetica, Arial, sans-serif;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header, main, section, article, aside, footer,
+nav, div,  ul,
+figure, figcaption, details, summary, address  {
     box-sizing: border-box;
 }
 
-body, div, ul {
-    margin:0;
-    padding:0;
-    border:none;
+body {
+    display: block;
+    min-height: 100vh;
+}
+
+header {
+    position: sticky;
+    text-align: center;
+    top: 0;
+    width: 100VW;
+}
+
+footer {
+    bottom: 0;
+    background-color: rgb(44, 42, 42);
+    position: fixed;
+    text-align: center;
+    width: 100vw;
+}
+
+/* Forms */
+form {
+    font-size: 105%;
+}
+
+.table { display:table; }
+.field { display: table-row;}
+
+label, input, select {
+    display: table-cell;
+    color: var(--dark);
+}
+
+label { text-align: right;}
+
+input {
+    height: 1.4em;
+    font-weight: 700;
 }
 
 button {
     border-radius: 2px;
     font-weight: 700;
-    /* min-width:  20em; */
     padding: 0.5em;
 }
 
-form {
-    color: white;
-    font-size: 150%;
-}
-input {height: 1.4em;font-weight:  700;font-size: 1.2em;}
-
-.debug {
-    border:1px dashed red;
-    z-index: 6000;
-}
-
+/* Debugging and display aids */
+.debug { border:1px dashed red; z-index: 6000; }
 .clear { clear: both; }
+.border { padding: 2px; border: 4px solid black;}
+.hide { display: none; }
 
-.list-block {
-    list-style: none;
-    display: flex;
-    width: 100%;
-}
-
-.list-block li {
-    flex-grow: 1;
-}
-
-.menuitem {
-    list-style-type: none;
-    margin: 2px;
-}
-
-.menuitem button {
-    min-width: 5em;
-}
-
-.dialog {
+dialog {
     box-shadow: 3px 3px 13px black;
     margin: 0 auto;
     padding: 1em;
     width: 50%;
 }
 
-.app-container {
-    background-color: black;
-    border: 1px solid black;
-    margin: 0 auto;
-    min-height: 720px;
-    position: relative;
-}
-
-.grid-wrapper {
-    display: grid;
-    grid-template-columns: 5em 15% 60% 15% 6em;
-    grid-template-rows: 1em 10% 55% 10em 2em;
-}
-    .grid-gutter-left {
-        grid-column-start: 1;
-        grid-column-end: 2;
-    }
-    .grid-sidebar-left {
-        grid-column-start: 2;
-        grid-column-end: 3;
-    }
-    .grid-column-main {
-        grid-column-start: 3;
-        grid-column-end: 4;
-    }
-    .grid-sidebar-right {
-        grid-column-start: 4;
-        grid-column-end: 5;
-    }
-
-    .grid-gutter-right {
-        grid-column-start: 5;
-        grid-column-end: 6;
-    }
-
-    .grid-row-top {
-        grid-row-start: 1;
-        grid-row-end: 2;
-    }
-    .grid-row-head {
-        grid-row-start: 2;
-        grid-row-end: 3;
-    }
-    .grid-row-main {
-        grid-row-start: 3;
-        grid-row-end: 4;
-    }
-    .grid-row-tail {
-        grid-row-start: 4;
-        grid-row-end: 5;
-    }
-    .grid-row-foot {
-        grid-row-start: 5;
-        grid-row-end: 6;
-    }
-
-.flex-wrapper {
-    background-color: lightgrey;
+/* Flexbox */
+.container {
+    align-items: flex-start;
+    background-color: var(--light);
     display: flex;
     flex-direction: row;
-    flex-wrap:none;
-    justify-content: center;
-
-    margin: 0 auto;
-    margin-top: 1%;
-    width: 98%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
-    .sidebar-item {
-        /* should live withing a flex box */
-        /* width: 10%; */
-        flex-grow: 1;
-    }
-
-    .uiview-item {
-        /* should live withing a flex box */
-        display:  flex;
-        flex-grow: 5;
-        flex-wrap: nowrap;
-        justify-content: space-around;
-        min-width: 83%;
-    }
-
-    .sidebar-right {
-        /* should live withing a flex box */
-        width: 15%;
-    }
-
-.border {
-    padding: 2px;
-    border: 4px solid black;
+.container.ui {
+    flex-grow: 5;
+    flex-wrap: nowrap;
 }
 
-.bevel {
-    background-color: cornflowerblue;
-    border-top: 3px solid lightskyblue;
-    border-left: 3px solid lightskyblue;
-    border-right: 3px solid darkblue;
-    border-bottom: 3px solid darkblue;
+.container.columns {
+    justify-content: space-between;
+    flex-direction: column;
 }
+
+.container.rows { flex-direction: row;}
+
+.container.evenly { justify-content: space-evenly; }
+.container.around { justify-content: space-around; }
+.container.left { justify-content: flex-start; }
+
+    /* Items live within containers */
+    .item {
+        flex-basis: auto;
+    }
+
+    .item.baseline { align-items: baseline; }
+    .item.top { align-items: flex-start; justify-content: flex-start;}
+    .item.center { text-align: center; }
+
+
+
