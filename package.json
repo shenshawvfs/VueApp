@@ -3,9 +3,9 @@
   "version": "1.1.3",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 4000",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve --port 4000",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "lint": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.12.1",
@@ -16,10 +16,10 @@
   },
   "arch": "any",
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.13",
-    "@vue/cli-plugin-eslint": "^4.5.13",
-    "@vue/cli-plugin-pwa": "^4.5.13",
-    "@vue/cli-service": "^4.5.13",
+    "@vue/cli-plugin-babel": "^5.0.4",
+    "@vue/cli-plugin-eslint": "^5.0.4",
+    "@vue/cli-plugin-pwa": "^5.0.4",
+    "@vue/cli-service": "^5.0.4",
     "babel-eslint": "^10.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",

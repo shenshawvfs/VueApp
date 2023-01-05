@@ -1,26 +1,10 @@
 <!--
-VFS VUE Single File Component
+<pg-sidebar />
 
-<pg-sidebar></pg-sidebar>
-
-Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
+@copyright: (c) 2022. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
-<template>
-
-    <aside id="sidebar-wrapper" class="grid-side area vue-component">
-        <div id="sidebar-container" class="sidebar flexbox">
-            <div class="side-item">
-                <h2>{{ title }}</h2>
-                <h4>{{ description }}</h4>
-            </div>
-            <pg-navbar></pg-navbar>
-            <slot></slot>
-        </div>
-    </aside>
-
-</template>
 <script>
-    import Controller from '@/mixins/controller'
+    import Controller from '@/plugins/controller'
 
     import pgNavbar from '@/components/Navbar.vue'
 
@@ -38,4 +22,29 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     export default new SidebarController('pgSidebar', { pgNavbar });
 
 </script>
-<style></style>
+<template>
+
+    <aside>
+        <div class="flexbox sidebar">
+            <div class="flexitem side-item">
+                <h2>{{ title }}</h2>
+                <h4>{{ description }}</h4>
+            </div>
+            <pg-navbar></pg-navbar>
+            <slot></slot>
+        </div>
+    </aside>
+
+</template>
+<style scoped>
+    /* sidebar */
+    .sidebar {
+        flex-direction: column;
+        background: #4c4c4c;
+        box-shadow: inset -1px 0 2px 1px #222;
+    }
+        .side-item {
+            margin-top: 2em;
+            padding: 1em;
+        }
+</style>

@@ -5,20 +5,8 @@
 
 @copyright (c) 2019. Scott Henshaw. All Rights Reserved.
 -->
-<template>
-
-    <section class="component-style">  <!-- Just one main element per template -->
-        <div>{{ title }}</div>
-        <div>
-            <!-- Put your HTML template here-->
-            <slot></slot>
-        </div>
-        <button @click="doIt( event )">Do it!</button>
-    </section>
-
-</template>
 <script>
-    import Controller from '@/mixins/controller'
+    import Controller from '@/plugins/controller'
 
     // import other components you use here...
 
@@ -93,6 +81,18 @@
     export default new ComponentController('someTagName'/* , { subComponent, anotherComponent } */);
 
 </script>
+<template>
+
+    <section class="component-style">  <!-- Just one main element per template -->
+        <div>{{ title }}</div>
+        <div>
+            <!-- Put your HTML template here-->
+            <slot></slot>
+        </div>
+        <button @click="doIt( event )">Do it!</button>
+    </section>
+
+</template>
 <style scoped>
     /*
     Add "scoped" attribute to limit CSS to this component only <style scoped>

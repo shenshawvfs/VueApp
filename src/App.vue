@@ -1,66 +1,42 @@
 <!--
 <pg-app />
+
 @copyright (c) 2021. Scott Henshaw. All Rights Reserved.
 -->
 <template>
 
-    <main class="grid-frame vue-main-rootcomponent">
+    <main class="grid-frame app">
 
-        <pg-header />
-        <pg-sidebar />
+        <pg-header class="grid-header" />
+        <pg-sidebar class="grid-side" />
 
-        <router-view />
+        <router-view class="grid-content" />
 
     </main>
 
 </template>
-<script>
-    // typical Vue component controller defined and registered here
-    import Controller from '@/mixins/controller'
-
-    import pgHeader  from '@/components/Header.vue'
-    import pgNavbar from '@/components/Navbar.vue'
-    import pgSidebar from '@/components/Sidebar.vue'
-
-    class AppController extends Controller {
-
-        constructor( name, subComponentList = []) {
-            super( name, subComponentList );
-            this.vm = {
-                title: 'Creative Tech Projects',
-                subtitle: ''
-            }
-        }
-    }
-
-    // export a definition for this view
-    export default new AppController('pgApp', { pgHeader, pgSidebar, pgNavbar });
-
-</script>
 <style>
     /**
     * CSS Styles for VFS Demo App
     *
-    * @Copyright 2014-2015, Vancouver Film School, In cooperation with Kibble Games Inc.
+    * @Copyright 2014-2022, Vancouver Film School, In cooperation with Kibble Games Inc.
     * @author: Scott Henshaw
     * @Contributor: Clinton Ramonida
     */
 
-    /* DEFAULTS */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { font-size: 100%; }
-    * { margin: 0; padding: 0; }
-
+    /* DEFAULTS imported from style-base.css */
     body {
         background-color: rgb(194, 193, 193);
         font-family: 'Maven Pro', Helvetica, sans-serif;
         overflow: hidden;
     }
 
+    h1, h3 { text-shadow: #333 2px 2px 3px; }
+
     label {
         color: white;
         font-weight: 600;
-        text-shadow: 2px 2px #777;
+        text-shadow: #333 1px 1px 2px;
     }
 
     input {
@@ -89,69 +65,48 @@
     /* GRID FRAME/CONTAINER (PARENT) */
     .grid-frame {
         display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        grid-auto-rows: auto;
+        grid-template-columns: 1fr 7fr 1fr;
+        grid-template-rows: 1fr 6fr 2fr;
         grid-template-areas:
-        "headbar headbar headbar headbar headbar headbar headbar headbar headbar headbar"
-        "sidecontent thecontent thecontent thecontent thecontent thecontent thecontent thecontent thecontent thecontent"
-        "footcontent footcontent footcontent footcontent footcontent footcontent footcontent footcontent footcontent footcontent" ;
+        "header  header  header  header  header  header  header  header  header"
+        "sidebar sidebar app     app     app     app     app     app     app"
+        "sidebar sidebar footer  footer  footer  footer  footer  footer  footer";
         justify-items: start;
     }
 
-    .grid-header {
-        grid-area: headbar;
-        z-index: 1000;
-        width: 100vw;
-        height: 120px;
-    }
-
-    .grid-nav {
-        grid-area: navbar;
-    }
-
-    .grid-content {
-        grid-area: thecontent;
-        width: 100%;
-        height: 82vh;
-    }
-
-    .grid-side {
-        grid-area: sidecontent;
-        width: 12vw;
-        height: 82vh;
-    }
-
-    .grid-foot {
-        grid-area: footcontent;
-        width: 100vw;
-        height: 100px;
-    }
+    .grid-header { grid-area: header;}
+    .grid-nav { grid-area: navbar; }
+    .grid-content { grid-area: app;}
+    .grid-side { grid-area: sidebar;}
+    .grid-foot { grid-area: footer; }
 
     /* GRID CONTAINER CHILD (CHILD BUT A CONTAINER) */
     .grid-frame-child {
         display: grid;
         background: #FFFFFF;
-        grid-template-columns: repeat(15, 1fr);
-        grid-template-rows: repeat(15, 1fr);
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(9, 1fr);
         height: 100%;
         width: 100%;
     }
 
-    .grid-intro{
-        grid-column: 2/9;
-        grid-row: 2/3;
-    }
+        .grid-intro {
+            grid-column: 2/9;
+            grid-row: 2/3;
+        }
 
-    .grid-filter{
-        grid-column: 9/15;
-        grid-row: 2/3;
-        text-align: end;
-    }
+        .grid-filter {
+            grid-column: 9/15;
+            grid-row: 2/3;
+            text-align: end;
+        }
 
-    .grid-tile{
-        grid-column: 2/15;
-        grid-row: 3/15;
-    }
+        .grid-tile {
+            grid-column: 2/15;
+            grid-row: 3/15;
+        }
+
+    .container { background-color: transparent;}
 
     /* FLEX CONTAINER (PARENT) */
     .flexbox {
@@ -159,34 +114,24 @@
         background-color: rgb(241, 244, 247);
         height: 100%;
     }
+    .flexbox.columns { flex-direction: column; }
+    .flexbox.rows { flex-direction: row; }
 
-    /* FLEX ITEMS (CHILDREN) */
-    .flexitem{
-        align-self: center;
-    }
-
-    /* header */
-    .header {
-        background: #D10034;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        box-shadow: 0 4px 5px -5px #222;
-    }
+        /* FLEX ITEMS (CHILDREN) */
+        .flexitem{ align-self: center; }
+        .flexitem.left { align-self: flex-start; }
 
     .logo {
-    background-image:url("assets/vfs_logo.png");
-    background-size:100% 100%;
-    height: 6em;
-    width: 8em;
-    max-width: 8em;
-    margin-left: 1em;
-    cursor: pointer;
+        background-image:url("assets/vfs_logo.png");
+        background-size:100% 100%;
+        height: 6em;
+        width: 8em;
+        max-width: 8em;
+        margin-left: 1em;
+        cursor: pointer;
     }
 
-    .title {
-        font-family: 'Raleway', Arial, Helvetica, sans-serif;
-    }
+    .title { font-family: 'Raleway', Arial, Helvetica, sans-serif; }
 
     .search-bar{
         color: white;
@@ -194,27 +139,6 @@
         margin-top: 5em;
         cursor: pointer;
         visibility: hidden;
-    }
-
-    /* sidebar */
-    .sidebar {
-        flex-direction: column;
-        background: #4c4c4c;
-        box-shadow: inset -1px 0 2px 1px #222;
-    }
-
-    .side-item {
-        margin-top: 2em;
-        padding: 1em;
-    }
-
-    /* navigation bar */
-    .menu { background: rgba(0, 0, 0, 0); }
-
-    .navbar{
-        margin-top: 2em;
-        width: 100%;
-        height: 100%;
     }
 
     ul {
@@ -267,21 +191,16 @@
         overflow: hidden;
         width: 65vw;
     }
+        .edit-form-child {
+            grid-area: form;
+            overflow: auto;
+        }
 
-    .edit-form-child {
-        grid-area: form;
-        overflow: auto;
-    }
+    .formitems{ margin: 15px 10px 15px 10px; }
 
-    .formitems{
-        margin: 15px 10px 15px 10px;
-    }
+    .description-box { margin: 40px 10px 40px 10px;}
 
-    .description-box{
-        margin: 40px 10px 40px 10px;
-    }
-
-    #review-button{
+    #review-button {
         width: 95%;
         margin: 10px;
     }
@@ -292,7 +211,7 @@
         align-items: center;
     }
 
-    .btn{
+    .btn {
         background-color: white;
         color: black;
         height: 40px;
@@ -306,45 +225,16 @@
         color: white;
     }
 
-
-
     /* Heading Styles */
-    h1 {
-        color: white;
-    }
-
+    h1, h2, h3, h4 { color: white; }
     h2 {
-        color: white;
         font-family: 'Roboto', Helvetica, sans-serif;
         margin: 3px 0px 3px 0px;
     }
 
-    h3{
-        color: white;
-        font-family: 'Raleway', Helvetica, sans-serif;
-    }
+    h3, h4 { font-family: 'Raleway', Helvetica, sans-serif; }
 
-    h4{
-        color: white;
-        font-family: 'Raleway', Helvetica, sans-serif;
-    }
-
-
-
-    /* Vue components Styles */
-    .vue-main-rootcomponent{
-        /* border: 2px solid black; */
-    }
-
-    .vue-component{
-        /* border: 2px solid black;  */
-    }
-
-    .vue-sub-component{
-        /* border: 2px solid black; */
-    }
-
-    #app {
+    .app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -352,3 +242,28 @@
         color: #2c3e50;
     }
 </style>
+<script>
+    import "@/assets/style-base.css"
+
+    // typical Vue component controller defined and registered here
+    import Controller from '@/plugins/controller.js'
+
+    import pgHeader  from '@/components/Header.vue'
+    import pgNavbar from '@/components/Navbar.vue'
+    import pgSidebar from '@/components/Sidebar.vue'
+
+    class AppController extends Controller {
+
+        constructor( name, subComponentList = []) {
+            super( name, subComponentList );
+            this.vm = {
+                title: 'Creative Tech Projects',
+                subtitle: ''
+            }
+        }
+    }
+
+    // export a definition for this view
+    export default new AppController('pgApp', { pgHeader, pgSidebar, pgNavbar });
+
+</script>

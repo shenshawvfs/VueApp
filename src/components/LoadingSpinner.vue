@@ -14,7 +14,7 @@
 <script>
 
 // typical Vue component controller defined and registered here
-import Controller from '@/mixins/controller'
+import Controller from '@/plugins/controller'
 
 class SpinnerController extends Controller {
 

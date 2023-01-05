@@ -22,6 +22,11 @@ export default class Controller {
         this.methods =  {/*...mapActions('account', ['login', 'logout']),*/ };
 
         this._extractMethods(['compute_', 'compute','on_', 'on', 'vue_', 'vue', 'get_', 'get']);
+        this.methods["url"] = ( src = "default.jpg") => {
+            // allows us to dynamically specify an asset from the assets folder
+            const images = require.context(`../assets`, false, /\.png$|\.jpg$/)
+            return images(`./${src}`)
+        }
     }
 
     injectActions( actionMap ) { Object.assign( this.methods, mapActions( actionMap ))}
