@@ -1,11 +1,7 @@
 /*
- *   Copyright (c) 2019 Kibble Online, in cooperation with Vancouver Film School
- *   All rights reserved.
+ *   Copyright (c) 2019-2023 Kibble Game Studios Inc, All Rights Reserved
  */
-import Store from '../store.js'
-import Router from '../router.js'
-
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapStores } from 'pinia'
 
 const pascalCase = str => str.replace( /(\w)(\w*)/g, (g0,g1,g2) => { return g1.toUpperCase() + g2.toLowerCase() });
 const camelCase = str => str.replace( /(?:^\w|[A-Z]|\b\w)/g, ( g0, gi ) => { return gi === 0 ? g0.toLowerCase() : g0.toUpperCase() });
@@ -17,6 +13,7 @@ export default class Controller {
         this.vm = {};
         this.data = () => { return {...this.vm }};
         this.props = {};
+        this.emits = {};
         this.components = { ...componentList };
         this.computed = {/* ...mapGetters('account', ['status']) */ }
         this.methods =  {/*...mapActions('account', ['login', 'logout']),*/ };
@@ -30,7 +27,7 @@ export default class Controller {
     }
 
     injectActions( actionMap ) { Object.assign( this.methods, mapActions( actionMap ))}
-    injectGetters( gettersMap ) { Object.assign( this.computed, mapGetters( gettersMap ))}
+    injectGetters( storeMap ) { Object.assign( this.computed, mapStores( storeMap ))}
 
     _extractMethods( prefixList ) {
 

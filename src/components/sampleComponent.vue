@@ -24,10 +24,15 @@
             this.props = {
                 title: String
             }
-            /*
-            Data from the VUEX use injectGetters.
-            injectActions, injectGetters take an array of names from the vuex
-            */
+
+            // events emitted by this component to parents
+            this.emits = [
+                //'my-event', 'another-event'
+            ]
+
+
+            // Data from the VUEX use injectGetters.
+            // injectActions, injectGetters take an array of names from the vuex
             //this.injectGetters([/* List of names in array */]);
             //this.injectActions(['actionMethod','anotherAction'])
         }

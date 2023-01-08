@@ -1,24 +1,7 @@
 <!--
-VFS VUE Single File Component
-
-<pg-header />
-
-Copyright (c) 2022. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
+<VFSHeader />
+Copyright (c) 2022-2023. Kibble Game Studios Inc. All Rights Reserved.
 -->
-<template>
-
-    <section>
-        <header class="flexbox">
-            <div class="logo flexitem" @click="goHome( event )"></div>
-            <slot class="flexitem"></slot>
-            <div class="title flexitem">
-                <h1>{{ title }}</h1>
-                <h3>{{ subtitle }}</h3>
-            </div>
-        </header>
-    </section>
-
-</template>
 <script>
     import Controller from '@/plugins/controller'
 
@@ -39,9 +22,23 @@ Copyright (c) 2022. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new HeaderController('pgHeader');
+    export default new HeaderController('VFSHeader');
 
 </script>
+<template>
+
+    <section>
+        <header class="flexbox">
+            <div class="logo flexitem" @click="goHome( event )"></div>
+            <slot class="flexitem"></slot>
+            <div class="title flexitem">
+                <h1>{{ title }}</h1>
+                <h3>{{ subtitle }}</h3>
+            </div>
+        </header>
+    </section>
+
+</template>
 <style scoped>
     header {
         background: #D10034;

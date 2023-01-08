@@ -2,6 +2,22 @@
 VFS VUE Single File Component
 Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
+<script>
+    import Controller from '@/plugins/controller'
+
+    class AboutController extends Controller {
+
+        constructor( name, subComponentList = []) {
+            super( name, subComponentList );
+            this.vm = {
+                name: 'VFS Vue Template',
+            }
+        }
+    }
+
+    export default new AboutController('About');
+
+</script>
 <template>
 
     <section class="flexbox columns about">
@@ -39,20 +55,4 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     }
 
 </style>
-<script>
-    import Controller from '@/plugins/controller'
-
-    class AboutController extends Controller {
-
-        constructor( name, subComponentList = []) {
-            super( name, subComponentList );
-            this.vm = {
-                name: 'VFS Vue Template',
-            }
-        }
-    }
-
-    export default new AboutController('pgAbout');
-
-</script>
 

@@ -1,10 +1,30 @@
 <!--
-VFS VUE Single File Component
-
-<pg-home user="User"></pg-home>
-
-Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
+<VFSHome name="Title" />
+Copyright (c) 2023. Kibble Game Studios Inc. All Rights Reserved.
 -->
+<script>
+
+    import Controller from '@/plugins/controller'
+
+    class HomeController extends Controller {
+
+        constructor( name, subComponentList = []) {
+            super( name, subComponentList );
+            this.vm = {
+                formData: {
+                    sampleOne:"",
+                    sampleTwo:42,
+                }
+            }
+            this.props = {
+                name: String,
+            }
+        }
+    }
+
+    export default new HomeController('VFSHome');
+
+</script>
 <template>
 
     <section class="flexbox columns home">
@@ -56,26 +76,4 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         padding-bottom: 1.5em;
     }
 </style>
-<script>
 
-    import Controller from '@/plugins/controller'
-
-    class HomeController extends Controller {
-
-        constructor( name, subComponentList = []) {
-            super( name, subComponentList );
-            this.vm = {
-                formData: {
-                    sampleOne:"",
-                    sampleTwo:42,
-                }
-            }
-            this.props = {
-                name: String,
-            }
-        }
-    }
-
-    export default new HomeController('pgHome');
-
-</script>

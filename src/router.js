@@ -4,17 +4,27 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 */
 'use strict';
 
-import Vue from 'vue'
-import Router from 'vue-router';
-Vue.use( Router );
+// import Vue from 'vue'
+import { createRouter, createWebHistory } from 'vue-router';
 
-import Home from '@/routes/Home.vue'
-import About from '@/routes/About.vue'
+const router = createRouter({
 
-
-export default new Router({
-    routes: [
-        { path:"/",     name:"About", component: About },
-        { path:"/home", name:"Home", component: Home, props: { name: "DemoApp"} },
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: [{
+            path:"/",
+            name:"Home",
+            component: () => import('@/routes/HomeView.vue'),
+            props: { name: "DemoApp"}
+        },{
+            path:"/about",
+            name:"About",
+            component: () => import('@/routes/AboutView.vue')
+        },{
+            path:"/info",
+            name:"Vue 3.x Info",
+            component: () => import('@/routes/Vue3InfoView.vue')
+        }
     ]
 });
+
+export default router;
