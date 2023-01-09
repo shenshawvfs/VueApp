@@ -1,10 +1,14 @@
 <!--
-<pg-navbar />
-
-@copyright (c) 2022. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
+<VFSNavbar />
+@copyright (c) 2022-2023. Kibble Game Studios Inc. All Rights Reserved.
 -->
 <script>
+    import { RouterLink, RouterView } from 'vue-router'
+
     import Controller from '@/plugins/controller'
+
+    import { useInfoStore } from '@/stores/infoStore.js'
+    import { useModelStore } from '@/stores/sampleStore.js'
 
     class NavbarController extends Controller {
 
@@ -12,38 +16,71 @@
             super( name, subComponentList )
             this.vm = {
                 navMenu:[
-                    { section: "About" },
-                    { section: "Home" },
+                    { path:"/", section: "Home" },
+                    { path:"/about", section: "About" },
+                    { path:"/info", section: "Info" }
                 ]
-            };
+            }
+
+            this.injectStore( useInfoStore )
+                .injectStore( useModelStore )
         }
     }
 
-    export default new NavbarController('pgNavbar');
+    export default new NavbarController('VFSNavbar');
 
 </script>
 <template>
 
-    <nav class="grid-nav">
-        <div class="flexbox menu">
-            <div class="flexitem navbar">
-                <ul id="ul-sidenav">
-                    <li id="li-sidenav" v-for="(item, index) in navMenu" :key="index">
-                        <router-link :to="{ name:item.section }">{{ item.section }}</router-link>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <nav class="navbar">
+        <ul class="menu">
+            <li v-for="(item, i) in navMenu" :key="i">
+                <router-link :to="item.path" class="menu-item">{{ item.section }}</router-link>
+            </li>
+        </ul>
     </nav>
 
 </template>
 <style scoped>
     /* navigation bar */
-    .menu { background: rgba(0, 0, 0, 0); }
+    li {
+        display: inline-block;
+        list-style: none;
+    }
 
-    .navbar{
-        margin-top: 2em;
+    nav {
+        background: var(--medium);
         width: 100%;
-        height: 100%;
+    }
+
+    nav a.router-link-exact-active {
+        color: var(--color-text);
+        font-weight: 700;
+    }
+
+    nav a.router-link-exact-active:hover {
+        background-color: transparent;
+    }
+
+    nav a {
+        display: inline-block;
+        padding: 0 1rem;
+        border-left: 1px solid var(--color-border);
+    }
+
+    nav a:first-of-type {
+        border: 0;
+    }
+
+    .menu {
+        align-content: flex-start;
+        flex-direction: row;
+        background: rgba(0, 0, 0, 0);
+    }
+
+    .navbar {
+        /* background: #D10034; */
+        justify-content: space-between;
+        box-shadow: 0 4px 5px -5px #222;
     }
 </style>

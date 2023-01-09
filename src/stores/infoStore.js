@@ -4,7 +4,7 @@ Copyright (c) 2023. Scott Henshaw, Kibble Game Studios Inc. All Rights Reserved.
 */
 import { defineStore } from 'pinia'
 
-export const useAppInfoStore = defineStore('appInfo', {
+export const useInfoStore = defineStore('info', {
 
     state: () => ({
         mainVersion: 0,
@@ -13,6 +13,7 @@ export const useAppInfoStore = defineStore('appInfo', {
     }),
 
     getters: {
+        name: state => { return "VFS PG Vue 3.x Template" },
         version: state => {
 
             const month = state.today.getUTCMonth() + 1;  // Jan = 0
@@ -22,7 +23,6 @@ export const useAppInfoStore = defineStore('appInfo', {
             `.${day}`+
             `.${state.subVersion}`
         },
-        name: state => { return "VFS PG Vue 3.x Template" }
     },
 
     actions: {

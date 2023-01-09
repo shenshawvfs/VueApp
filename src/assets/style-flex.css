@@ -3,7 +3,7 @@
 /* Flexbox */
 .container {
     align-items: flex-start;
-    background-color: var(--light);
+    /* background-color: var(--light); */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

@@ -21,7 +21,7 @@ const router = createRouter({
             component: () => import('@/routes/AboutView.vue')
         },{
             path:"/info",
-            name:"Vue 3.x Info",
+            name:"Info",
             component: () => import('@/routes/Vue3InfoView.vue')
         }
     ]

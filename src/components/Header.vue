@@ -5,20 +5,20 @@ Copyright (c) 2022-2023. Kibble Game Studios Inc. All Rights Reserved.
 <script>
     import Controller from '@/plugins/controller'
 
+    import { useInfoStore } from '@/stores/infoStore.js'
+
     class HeaderController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
             this.vm = {
-                title: "Demo Vue App",
                 subtitle: "VFS Programming for Games",
             }
-        }
+            this.props = {
+                title: String
+            }
 
-        goHome( event ) {
-            // do some router magic here to actualy change the URL
-            console.log("Going home now!");
-            location.href = "./index.html";
+            this.injectStore( useInfoStore );
         }
     }
 
@@ -27,31 +27,33 @@ Copyright (c) 2022-2023. Kibble Game Studios Inc. All Rights Reserved.
 </script>
 <template>
 
-    <section>
-        <header class="flexbox">
-            <div class="logo flexitem" @click="goHome( event )"></div>
-            <slot class="flexitem"></slot>
-            <div class="title flexitem">
-                <h1>{{ title }}</h1>
-                <h3>{{ subtitle }}</h3>
-            </div>
-        </header>
+    <section class="container left">
+        <img alt="VFS Logo" class="logo" src="@/assets/vfs_logo.png" width="125" height="125" @click="$router.push('/')"/>
+        <div class="title item">
+            <h1>{{ infoStore.name }}</h1>
+            <h4>{{ subtitle }} {{ infoStore.version }}</h4>
+            <button @click="infoStore.increment()">Add Version</button>
+        </div>
+        <slot class="item"></slot>
     </section>
 
 </template>
 <style scoped>
-    header {
-        background: #D10034;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        box-shadow: 0 4px 5px -5px #222;
-    }
-
-    .title h1, .title h3 {
+    .title h1, .title h4 {
         float:right;
         margin-right: 2vw;
         text-align:right;
         width: 100%;
+    }
+
+    .logo {
+        display: block;
+        margin: 0 auto 2rem;
+    }
+
+    @media (min-width: 1024px) {
+        .logo {
+            margin: 0 2rem 0 0;
+        }
     }
 </style>

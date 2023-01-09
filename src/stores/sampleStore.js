@@ -6,7 +6,8 @@ import { defineStore } from 'pinia'
 
 
 // Store with local definitions
-const useModelStore = defineStore('modelStore',{
+export const useModelStore = defineStore('modelStore',{
+
     state: () => ({
         itemList: [],
         filter:   'all',
@@ -22,6 +23,4 @@ const useModelStore = defineStore('modelStore',{
             this.itemList.push( anItem )
         }
     }
-});
-
-export default useModelStore;
+})

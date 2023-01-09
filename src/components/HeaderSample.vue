@@ -1,5 +1,6 @@
 <script setup>
-
+    // Vue 3 demo using the composition API
+    // Triggered by the keyword setup in the script tag
     import { useAppInfoStore } from '@/stores/appInfo'
 
     defineProps({
