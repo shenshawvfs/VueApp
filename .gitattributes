@@ -73,7 +73,6 @@ Assets/**/*[Ll]ighting*.asset -unityyaml lfs
 *.spp lfs
 *.zpr lfs
 *.ZPR lfs
-*.ico lfs
 *.pur lfs
 *.raw lfs
 
