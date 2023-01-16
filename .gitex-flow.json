@@ -1,0 +1,11 @@
+{
+    "gitFlowConfig": {
+        "masterBranch": "main",
+        "developBranch": "develop",
+        "featureBranchPrefix": "feature",
+        "bugfixBranchPrefix": "bugfix",
+        "releaseBranchPrefix": "release",
+        "hotfixBranchPrefix": "hotfix",
+        "supportBranchPrefix": "support",
+  }
+}
