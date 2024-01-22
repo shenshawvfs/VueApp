@@ -2,22 +2,6 @@
 VFS VUE Single File Component
 Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
-<script>
-    import Controller from '@/plugins/controller'
-
-    class AboutController extends Controller {
-
-        constructor( name, subComponentList = []) {
-            super( name, subComponentList );
-            this.vm = {
-                name: 'VFS Vue Template',
-            }
-        }
-    }
-
-    export default new AboutController('About');
-
-</script>
 <template>
 
     <section class="flexbox columns about">
@@ -39,9 +23,27 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             This basic view is called a route edge or just a route.  This is the root edge.
             </p><br/>
         </div>
+        <SampleComponent title="A Simple Test" />
     </section>
 
 </template>
+<script>
+    import Controller from '@/plugins/controller'
+    import SampleComponent from '@/components/SampleComponent.vue'
+
+    class AboutController extends Controller {
+
+        constructor( name, subComponentList = []) {
+            super( name, subComponentList );
+            this.vm = {
+                name: 'VFS Vue Template',
+            }
+        }
+    }
+
+    export default new AboutController('About',{ SampleComponent });
+
+</script>
 <style scoped>
 /* Local styles for this template */
     .about {
