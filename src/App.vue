@@ -1,13 +1,3 @@
-<script setup>
-
-import { RouterLink, RouterView } from 'vue-router'
-
-import VFSHeader from '@/components/Header.vue'
-import VFSNavbar from '@/components/Navbar.vue'
-
-// todo import appInfoStore
-
-</script>
 <template>
 
     <header class="wrapper container columns">
@@ -19,6 +9,15 @@ import VFSNavbar from '@/components/Navbar.vue'
     </main>
 
 </template>
+<script setup>
+
+import { RouterLink, RouterView } from 'vue-router'
+
+import VFSHeader from '@/components/Header.vue'
+import VFSNavbar from '@/components/Navbar.vue'
+
+
+</script>
 <style>
 
     header {
