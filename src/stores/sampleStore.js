@@ -2,25 +2,30 @@
 Pinia Data Store.
 Copyright (c) 2023. Scott Henshaw, Kibble Game Studios Inc. All Rights Reserved.
 */
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 
 // Store with local definitions
-export const useModelStore = defineStore('modelStore',{
+export const useSampleStore = defineStore('sampleStore',{
 
     state: () => ({
-        itemList: [],
+        itemDataList: [
+            {name:"Item One", value: 1},
+            {name:"Item Two", value: 2},
+            {name:"Item Three", value: 3},
+        ],
         filter:   'all',
         current:  0
     }),
     getters: {
-        getList( state ) {
-            return state.itemList;
-        }
+        itemList: state => state.itemDataList,
+        filterTerm: state => state.filter,
     },
     actions: {
         addItem( anItem ) {
-            this.itemList.push( anItem )
+
+            this.itemDataList.push( anItem )
         }
     }
 })

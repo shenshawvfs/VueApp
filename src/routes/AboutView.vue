@@ -23,13 +23,15 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             This basic view is called a route edge or just a route.  This is the root edge.
             </p><br/>
         </div>
-        <SampleComponent title="A Simple Test" />
+        <SampleComponent title="A Simple Test too" />
+        <SampleControllerComponent title="OOP Test"/>
     </section>
 
 </template>
 <script>
     import Controller from '@/plugins/controller'
     import SampleComponent from '@/components/SampleComponent.vue'
+    import SampleControllerComponent from '@/components/SampleControllerComponent.vue';
 
     class AboutController extends Controller {
 
@@ -41,17 +43,17 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new AboutController('About',{ SampleComponent });
+    export default new AboutController('About',{ SampleComponent, SampleControllerComponent });
 
 </script>
 <style scoped>
-/* Local styles for this template */
+    /* Local styles for this template */
     .about {
-        /* display: block; */
         margin:2vw;
         border: 1px solid black;
         background-color: lightgray;
         color: black;
+        padding: 2rem;
         height: 78vh;
         width: 80vw;
     }

@@ -9,7 +9,7 @@ import { defineStore } from 'pinia'
 
 // import User from '@/model/user' // import POJS model objects
 
-export default {
+export const useModelStore = defineStore('modelStore', {
     // PRIVATE: model state of the application, a bunch of POJS objects
     state: () => ({
         actionData: {
@@ -48,4 +48,4 @@ export default {
             */
         }
     }
-}
+})

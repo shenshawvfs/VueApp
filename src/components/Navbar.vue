@@ -8,7 +8,7 @@
     import Controller from '@/plugins/controller'
 
     import { useInfoStore } from '@/stores/infoStore.js'
-    import { useModelStore } from '@/stores/sampleStore.js'
+    import { useModelStore } from '@/stores/modelStore.js'
 
     class NavbarController extends Controller {
 

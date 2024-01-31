@@ -27,7 +27,7 @@ export default class Controller {
     }
 
     // VUEX
-    injectGetters( getterMap ) { Object.assign( this.computed, mapState( getterMap ))}
+    injectGetters( getterMap ) { Object.assign( this.computed, mapStores( getterMap ))}
     injectActions( actionMap ) { Object.assign( this.methods, mapActions( actionMap ))}
 
     // Pinia and one at a time, chain them

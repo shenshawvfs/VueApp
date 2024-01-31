@@ -7,36 +7,43 @@
 -->
 <template>
 
-    <section class="component-style">  <!-- Just one main element per template -->
-        <div>{{ title }}</div>
+    <section class="component-style border">  <!-- Just one main element per template -->
+        <h3>{{ title }}</h3>
         <div>
-            <!-- Put your HTML template here-->
-            <slot></slot>
-
             <div v-if="visible">
                 This starts visible, but push the button below
+                <slot><!-- user innerHTML here--></slot>
             </div>
             <div v-else>
-                THis is now visible because you pushed the button
+                This is now visible because you pushed the button
+                <ul>
+                    <li v-for="(item,i) in itemList" :key="i">{{ item.name }}</li>
+                </ul>
+                <button @click="addItem( empty )">Add Empty Item</button>
             </div>
-
         </div>
-        <button @click="doIt( event )">Do it!</button>
+        <button @click="doIt( $event )">Do it!</button>
     </section>
 
 </template>
 <script setup>
-    import { ref } from 'vue'
+    import { ref, reactive } from 'vue'
+    import { useSampleStore } from '@/stores/sampleStore.js'
 
-    defineProps({
-        title: String
-    });
+    const data = useSampleStore();
+    const props = defineProps({ title: String });
+    const visible = ref( true );
 
-    let visible = ref( true );
+    const itemList = ref( data.itemList );
+    const empty = { name: "Empty thing", value: 100 };
 
-    const doIt = ( event ) => {
+    function doIt( event ) {
         // Yes the same old event object from before
         visible.value = !visible.value
+    }
+
+    function addItem( item ) {
+        data.addItem( item );
     }
 
 </script>
@@ -58,6 +65,10 @@
         flex-grow: inherit;
         flex-shrink: inherit;
         order: inherit;
+    }
+
+    .border {
+        border: 1px solid black;
     }
 
 </style>

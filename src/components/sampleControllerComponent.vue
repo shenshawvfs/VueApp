@@ -5,10 +5,27 @@
 
 @copyright (c) 2019. Scott Henshaw. All Rights Reserved.
 -->
+<template>
+
+    <section class="component-style">  <!-- Just one main element per template -->
+        <div>{{ title }}</div>
+        <div>
+            <!-- Put your HTML template here-->
+            <slot></slot>
+            <div :v-if="visible">
+                {{ someData }}
+            </div>
+        </div>
+        <button @click="doIt( $event )">Do it!</button>
+    </section>
+
+</template>
 <script>
     import Controller from '@/plugins/controller'
-
+    import { useSampleStore } from '@/stores/sampleStore.js'
     // import other components you use here...
+
+    const store = useSampleStore();
 
     class ComponentController extends Controller {
 
@@ -17,7 +34,8 @@
 
             // the vm date does not exist until the component is created
             this.vm = {
-                someData: "Hello world"
+                someData: "Hello world",
+                visible: true,
             }
 
             // props passed in when using this component
@@ -30,21 +48,20 @@
                 //'my-event', 'another-event'
             ]
 
-
-            // Data from the VUEX use injectGetters.
-            // injectActions, injectGetters take an array of names from the vuex
-            //this.injectGetters([/* List of names in array */]);
-            //this.injectActions(['actionMethod','anotherAction'])
+            // Data from the Pinia use injectStore.
+            this.injectStore( useSampleStore )
         }
 
         // Local component methods, used in a template they are called whenever it renders
-        doIt( params, $event ) {
+        handleAction( params, $event ) {
             // A method that does something to the props or viewModel, or global state
         }
 
         // Local computed methods, recomputed only when reactive properties change
-        computeDoIt( params ) {
-            this.someData = "has changed";
+        doIt( params ) {
+
+            let myStore = this.sampleStoreStore;
+            this.someData = `has changed ${myStore.filterTerm}`;
         }
 
         /*
@@ -83,21 +100,9 @@
         }
     }
 
-    export default new ComponentController('someTagName'/* , { subComponent, anotherComponent } */);
+    export default new ComponentController('SampleControllerComponent'/* , { subComponent, anotherComponent } */);
 
 </script>
-<template>
-
-    <section class="component-style">  <!-- Just one main element per template -->
-        <div>{{ title }}</div>
-        <div>
-            <!-- Put your HTML template here-->
-            <slot></slot>
-        </div>
-        <button @click="doIt( event )">Do it!</button>
-    </section>
-
-</template>
 <style scoped>
     /*
     Add "scoped" attribute to limit CSS to this component only <style scoped>
