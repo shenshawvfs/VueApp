@@ -1,0 +1,39 @@
+/** @copyright 2014-2022, Vancouver Film School */
+
+/* Flexbox */
+.container {
+    align-items: flex-start;
+    /* background-color: var(--light); */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.container.ui {
+    flex-grow: 5;
+    flex-wrap: nowrap;
+}
+
+.container.columns {
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.container.rows { flex-direction: row;}
+
+.container.evenly { justify-content: space-evenly; }
+.container.around { justify-content: space-around; }
+.container.left { justify-content: flex-start; }
+
+    /* Items live within containers */
+    .item {
+        flex-basis: auto;
+    }
+
+    .item.baseline { align-items: baseline; }
+    .item.top { align-items: flex-start; justify-content: flex-start;}
+    .item.center { text-align: center; }
+
+
+
